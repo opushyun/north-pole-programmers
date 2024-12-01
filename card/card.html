@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리스마스 카드 만들기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <!--    external css-->
+    <link rel="stylesheet" href="../css/card.css">
+</head>
+<body>
+    <div id="selectBg">
+        <h1>편지의 배경을 선택하세요!</h1>
+        <div class="image-container">
+            <div class="image-card" onclick="selectImage('../img/cardimage1.jpg')">
+                <img src="../img/cardimage1.jpg" alt="Background 1">
+            </div>
+            <div class="image-card" onclick="selectImage('../img/cardimage2.jpg')">
+                <img src="../img/cardimage2.jpg" alt="Background 2">
+            </div>
+            <div class="image-card" onclick="selectImage('../img/cardimage3.jpg')">
+                <img src="../img/cardimage3.jpg" alt="Background 3">
+            </div>
+            <div class="image-card" onclick="selectImage('../img/cardimage4.jpg')">
+                <img src="../img/cardimage4.jpg" alt="Background 4">
+            </div>
+        </div>
+        <a href="../index.html" class="back-button">🏠 메인 페이지로 돌아가기</a>
+    </div>
+    <div id="makeCard" class="letter-container">
+        <div class="textbox">
+            <textarea placeholder="여기에 작성해주세요.."></textarea>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="goBack()">뒤로가기</button>
+            <button class="button" onclick="saveLetter()">저장하기</button>
+        </div>
+    </div>
+
+<!--    external javascript-->
+    <script src="../js/card.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>

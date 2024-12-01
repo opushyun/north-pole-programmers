@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리스마스 알아보기</title>
+    <style>
+        body {
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('../img/back.jpg');
+            /* background-position: center -181px; */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            padding-top: 30px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p, blockquote {
+            margin: 20px auto;
+            width: 80%;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #ffebcd;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #0f8e0f;
+            border: 2px solid white;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #FF0000;
+            transform: scale(1.1);
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .image-container {
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <h1>🎄 성탄절의 참 의미 🎄</h1>
+
+    <div class="image-container">
+        <img src="../img/nativity.jpg" alt="아기 예수님 탄생 장면">
+    </div>
+
+    <p>
+        성탄절은 예수님의 탄생을 축하하는 날입니다. 마리아와 요셉, 그리고 천사들이 기뻐하며
+        아기 예수님의 탄생을 맞이한 그날처럼, 오늘날 우리도 그분의 사랑을 기리며 기뻐합니다.
+    </p>
+
+    <blockquote>
+        “지극히 높은 곳에서는 하나님께 영광이요, 땅에서는 기뻐하심을 입은 사람들 중에 평화로다” 
+        – <strong>누가복음 2:14</strong>
+    </blockquote>
+
+    <p>
+        이 성탄절, 가족과 친구들과 함께 시간을 보내며 사랑을 나누는 것은 예수님의 사랑을 전하는 기회입니다.
+        이 웹사이트에서는 직접 크리스마스 카드를 만들어 사랑하는 사람들에게 특별한 메시지를 전해보는 것은 어떨까요?
+        여러분도 이 기회를 통해 예수님의 사랑을 담아 카드를 제작해 보세요! 🎁
+    </p>
+<a href="../index.html" class="back-button">🏠 메인 페이지로 돌아가기</a>
+
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 250,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffdddd"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 1.2,
+                    "random": true
+                },
+                "size": {
+                    "value": 5,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "bottom",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false
+                    },
+                    "onclick": {
+                        "enable": false
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    background-image: url('../img/back.jpg');
+    background-position: center -181px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.button-container {
+    margin-top: 380px;
+    z-index: 1;
+    position: relative;
+}
+
+.button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0f8e0f;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FF0000;
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}

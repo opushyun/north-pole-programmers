@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리스마스 트리 꾸미기</title>
+    <!--    external css-->
+    <link rel="stylesheet" href="../css/tree_design.css">
+</head>
+<body>
+    <h1>🎄 트리 꾸미기 🎄</h1>
+    <h4>오너먼트를 클릭하신후 드래그 해주세요!</h4>
+
+    <div id="particles-js"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 250, // 눈송이 개수
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffdddd" // 눈송이 색상 (흰색)
+                },
+                "shape": {
+                    "type": "circle", // 눈송이 모양
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 1.2,
+                    "random": true
+                },
+                "size": {
+                    "value": 5,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": false // 눈송이끼리 선을 그리지 않음
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5, // 눈송이 떨어지는 속도
+                    "direction": "bottom", // 눈송이 이동 방향 (아래로)
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false // 마우스를 올려도 반응하지 않음
+                    },
+                    "onclick": {
+                        "enable": false // 클릭 반응 비활성화
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+    <div class="palette">
+        <img src="../img/green%20ball.png" alt="Green Ball" onmousedown="addOrnament('../img/green ball.png')">
+        <img src="../img/red%20ball.png" alt="Red Ball" onclick="addOrnament('../img/red ball.png')">
+        <img src="../img/striped%20ball.png" alt="Striped Ball" onclick="addOrnament('../img/striped ball.png')">
+        <img src="../img/candycane.png" alt="Candy Cane" onclick="addOrnament('../img/candycane.png')">
+        <img src="../img/stocking.png" alt="Stocking" onclick="addOrnament('../img/stocking.png')">
+        <img src="../img/star.png" alt="Star" onclick="addOrnament('../img/star.png')">
+        <img src="../img/lights.png" alt="Lights" onclick="addOrnament('../img/lights.png', true)">
+    </div>
+
+    <!-- Tree Container -->
+    <div class="background" id="background"></div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button onclick="resetTree()">리셋</button>
+        <button onclick="saveTree()">이미지 저장</button>
+    </div>
+
+    <script>
+        const background = document.getElementById('background');
+
+        // Add a new ornament to the tree
+        function addOrnament(src, isLights = false) {
+            const newOrnament = document.createElement('img');
+            newOrnament.src = src;
+            newOrnament.className = 'draggable';
+            newOrnament.style.position = 'absolute';
+            newOrnament.style.top = '400px'; // Default position
+            newOrnament.style.left = '200px'; // Default position
+
+            if (isLights) {
+                newOrnament.style.width = '160px'; // Wider lights
+                newOrnament.style.height = '100px'; // Height for lights
+            } else {
+                newOrnament.style.width = '40px';
+                newOrnament.style.height = '40px';
+            }
+
+            background.appendChild(newOrnament);
+            makeDraggable(newOrnament);
+        }
+
+        // Make an element draggable
+        function makeDraggable(element) {
+            element.style.cursor = 'grab';
+
+            // let offsetX = element.clientX - element.parentElement.offsetLeft;
+            // let offsetY = element.clientY - element.parentElement.offsetTop;
+            // element.style.left = `${e.clientX - offsetX}px`;
+            // element.style.top = `${e.clientY - offsetY}px`;
+
+            element.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                let offsetX = e.clientX - element.offsetLeft;
+                let offsetY = e.clientY - element.offsetTop;
+
+                // 드래그 시작 시 커서 변경
+                element.style.cursor = 'grabbing';
+
+                // let offsetX = e.clientX - element.getBoundingClientRect().left;
+                // let offsetY = e.clientY - element.getBoundingClientRect().top;
+                
+
+                const onMouseMove = (e) => {
+                    element.style.left = `${e.clientX - offsetX}px`;
+                    element.style.top = `${e.clientY - offsetY}px`;
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    // 드래그 끝난 후 커서 복원
+                    element.style.cursor = 'grab';
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+
+        // Reset the tree by clearing all decorations
+        function resetTree() {
+            background.innerHTML = '';
+        }
+
+        // Save the tree as an image
+        function saveTree() {
+            html2canvas(background).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '../img/decorated-tree.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Create falling particles
+        function createParticles() {
+            const particleCount = 50; // Number of particles
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+                particle.style.animationDuration = `${3 + Math.random() * 2}s`; // Random fall speed
+                particle.style.animationDelay = `${Math.random() * 2}s`; // Random delay
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Start the particle effect
+        createParticles();
+    </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+   <a href="../index.html" class="back-button">🏠 메인 페이지로 돌아가기</a>
+</body>
+</html>
